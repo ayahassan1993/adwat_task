@@ -1,0 +1,32 @@
+<section class="bg-light text-center">
+  <div class="container">
+    <h1 class="m-0">Our Products</h1>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="d-flex align-items-center">
+      <h3 class="mr-2">Filter By :</h3>
+      <select (change)="filter($event)">
+        <option value=''>All</option>
+        <option *ngFor="let category of categories" [value]='category.id'>{{category?.name}}</option>
+      </select>
+    </div>
+    <div class="row mt-5">
+        <h3 *ngIf="filterdProducts.length < 1">No Data Found</h3>
+        <div class="col-md-6 col-lg-4 mb-3" *ngFor="let product of filterdProducts" >
+            <div class="product" >
+                <img class="w-100 mb-5" [src]="product?.image" alt="pic">
+                <h3>{{product?.name}}</h3>
+                <div class="d-flex align-items-center justify-content-between">
+                    <p class="text-success">{{product?.price}} $</p>
+                    <p>{{getCategoryName(product?.category_id)}}</p>
+                </div>
+                <button *ngIf="product?.quantity > 0" class="w-100 btn btn-success" (click)="addToCart(product)">Add To Cart</button>
+                <button *ngIf="product?.quantity < 1" type="button" class="w-100 btn btn-danger" disabled>SOLD OUT</button>
+            </div>
+        </div>
+    </div>
+
+  </div>
+</section>

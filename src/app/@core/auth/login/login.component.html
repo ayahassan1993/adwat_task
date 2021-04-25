@@ -1,0 +1,19 @@
+<section class="sign-in">
+      <div class="container">
+          <div class="m-auto form_style">
+              <h2 class="text-center mb-5">LOGIN</h2>
+              <form [formGroup]='f' (submit) = "submit()">
+                <input formControlName="userName" type="text" placeholder="user Name">
+                <input formControlName="password" type="password" placeholder="password">
+                <div *ngIf="error">incorrect password or user name</div>
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary pl-4 pr-4" [disabled]="!f.valid">Login</button>
+                </div>
+                <div class="mt-4">
+                    Don’t have an account? <a routerLink="../register" class="text-blue">Register Now</a>
+                </div>
+              </form>
+          </div>
+      </div>
+  </section>
+  

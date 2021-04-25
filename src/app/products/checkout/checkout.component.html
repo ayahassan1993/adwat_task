@@ -1,0 +1,16 @@
+<section class="bg-light text-center">
+  <div class="container">
+    <h1 class="m-0">Checkout</h1>
+  </div>
+</section>
+<section>
+    <div class="container">
+        <p>Name : {{user.userName}}</p>
+        <p>Address : {{address}} <button class="btn btn-primary pl-5 pr-5 ml-3" (click)="show = !show">Change Address</button></p>
+        <input *ngIf="show" type="text" [(ngModel)]="address">
+        <p class="mt-5">Total Price : {{totalPrice}}$</p>
+        <p *ngIf="user.membership != 'normal'">After Discount : <span class="text-success">{{afterDiscount}}$</span></p>
+        <a class="btn btn-success pl-5 pr-5">checkout</a>
+
+    </div>
+</section>

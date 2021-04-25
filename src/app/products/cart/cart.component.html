@@ -1,0 +1,37 @@
+<section class="bg-light text-center">
+  <div class="container">
+    <h1 class="m-0">Cart</h1>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Product Image</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Totale Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cart">
+            <th><img style="max-width: 200px;" [src]="item?.image" alt="pic"></th>
+            <td>{{item?.price}}</td>
+            <td>{{item?.quantity}}</td>
+            <td>{{item?.price * item.quantity}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 *ngIf="cart.length == 0" class="text-center w-100" style="opacity: .5;">Cart is empty</h3>
+      <div class="d-flex justify-content-between align-items-center" *ngIf="cart.length >0">
+        <div>
+          <p class="mt-5">Total Price : {{totalPrice}}$</p>
+          <p *ngIf="userType != 'normal'">After Discount : <span class="text-success">{{afterDiscount}}$</span></p>
+        </div>
+        <a class="btn btn-success pl-5 pr-5" routerLink="../checkout">checkout</a>
+      </div>
+    </div>
+  </div>
+</section>
